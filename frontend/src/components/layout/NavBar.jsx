@@ -2,21 +2,15 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggle } from '../../redux/toggleSlice';
+import { MdDarkMode } from "react-icons/md";
+import { CiLight } from "react-icons/ci";
 
 const ThemeToggle = ({ isDark, dispatch }) => (
-    <div className="flex items-center space-x-2">
-        <span className="text-sm">🌙</span>
-        <label className="relative inline-flex items-center cursor-pointer">
-            <input
-                type="checkbox"
-                className="sr-only peer"
-                checked={isDark}
-                onChange={() => dispatch(toggle())}
-            />
-            <div className="w-11 h-6 bg-gray-300 rounded-full peer-checked:bg-yellow-500 transition-colors"></div>
-            <div className="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform peer-checked:translate-x-full"></div>
-        </label>
-        <span className="text-sm">☀️</span>
+    <div
+        className="flex items-center space-x-2 cursor-pointer"
+        onClick={() => dispatch(toggle())}
+    >
+        {isDark ? (<MdDarkMode className="text-2xl" />) : (<CiLight className="text-2xl" />)}
     </div>
 );
 
