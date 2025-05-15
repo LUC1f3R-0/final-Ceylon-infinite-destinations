@@ -1,13 +1,26 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import Home from '../view/Home'
+import React from 'react';
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, } from 'react-router-dom';
+import Home from '../view/Home';
+import About from '../view/About';
+import Layout from '../components/layout/Layout';
+import NotFound from '../view/NotFound';
 
 const AppRoutes = () => {
-  return (
-    <Routes>
-        <Route path="/" element={<Home/>}/>
-    </Routes>
-  )
-}
+    const router = createBrowserRouter(
+        createRoutesFromElements(
+            <>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="about" element={<About />} />
 
-export default AppRoutes
+
+                </Route >
+                <Route path="*" element={<NotFound />} />
+            </>
+        )
+    );
+
+    return <RouterProvider router={router} />;
+};
+
+export default AppRoutes;
