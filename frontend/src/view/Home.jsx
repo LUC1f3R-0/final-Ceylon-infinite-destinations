@@ -6,7 +6,6 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 const Home = React.memo(() => {
     const isDark = useSelector((state) => state.toggle.value);
     const navigate = useNavigate();
-
     const socialLinks = [
         {
             href: 'https://www.facebook.com/share/1XjEbgs2kd/?mibextid=qi2Omg',

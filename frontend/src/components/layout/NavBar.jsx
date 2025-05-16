@@ -19,6 +19,11 @@ const NavBar = () => {
     const isDark = useSelector((state) => state.toggle.value);
     const [isMobileOpen, setIsMobileOpen] = useState(false);
 
+    // Remove this useEffect because state loads from redux initialState now
+    // React.useEffect(() => {
+    //     const dark = JSON.parse(localStorage.getItem('theme'))
+    // }, [])
+
     return (
         <nav className={`${isDark ? "bg-black text-white" : "bg-white text-black"} fixed top-0 left-0 right-0 z-50 shadow-md duration-500`}>
             <div className="container mx-auto px-4 flex justify-between items-center h-16">

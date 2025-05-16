@@ -7,4 +7,9 @@ const store = configureStore({
   },
 });
 
-export default store
+store.subscribe(() => {
+  const dark = store.getState().toggle.value;
+  localStorage.setItem('theme', JSON.stringify(dark));
+});
+
+export default store;

@@ -1,9 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const savedTheme = JSON.parse(localStorage.getItem('theme'));
+const initialTheme = savedTheme !== null ? savedTheme : false;
+
 const toggleSlice = createSlice({
   name: "toggle",
   initialState: {
-    value: false,
+    value: initialTheme,
   },
   reducers: {
     toggle: (state) => {
