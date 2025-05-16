@@ -13,11 +13,19 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  cursor: context-menu;
+  
 }
 
 .isDark {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
+
 .main-content {
   padding-top: 64px; /* or whatever your navbar height is */
+}
+
+body {
+  overflow-x: hidden;
+  user-select: none;
 }
