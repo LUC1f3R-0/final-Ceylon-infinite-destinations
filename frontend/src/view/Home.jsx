@@ -35,40 +35,20 @@ const Home = React.memo(() => {
 
     return (
         <div className="relative min-h-screen overflow-hidden">
-            <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover scale-105 transition-transform duration-[5000ms]"
-                aria-hidden="true"
-            >
+            <video autoPlay loop muted playsInline loading="lazy" className="absolute inset-0 w-full h-full object-cover scale-105 transition-transform duration-[5000ms]" aria-hidden="true">
                 <source src="/path/to/home-video.mp4" type="video/mp4" />
             </video>
 
-            <div
-                className={`absolute inset-0 bg-gradient-to-b ${isDark ? 'from-gray-900/70 to-black/90' : 'from-white/80 to-gray-200/90'
-                    } flex flex-col items-center justify-center text-center px-4 transition-colors duration-500`}
-            >
-                <h1
-                    className={`text-3xl sm:text-5xl md:text-6xl font-extrabold mb-4 tracking-wide drop-shadow-lg ${isDark ? 'text-white hover:text-yellow-300' : 'text-gray-900 hover:text-blue-600'
-                        } transition-colors duration-300`}
-                >
+            <div className={`absolute inset-0 bg-gradient-to-b ${isDark ? 'from-gray-900/70 to-black/90' : 'from-white/80 to-gray-200/90'} flex flex-col items-center justify-center text-center px-4 transition-colors duration-500`}>
+                <h1 className={`text-3xl sm:text-5xl md:text-6xl font-extrabold mb-4 tracking-wide drop-shadow-lg ${isDark ? 'text-white hover:text-yellow-300' : 'text-gray-900 hover:text-blue-600'} transition-colors duration-300`}>
                     Welcome to
                 </h1>
 
-                <h2
-                    className={`text-3xl sm:text-5xl md:text-6xl font-extrabold mb-8 tracking-wide drop-shadow-lg ${isDark ? 'text-yellow-300 hover:text-yellow-400' : 'text-blue-700 hover:text-blue-900'
-                        } transition-colors duration-300`}
-                >
+                <h2 className={`text-3xl sm:text-5xl md:text-6xl font-extrabold mb-8 tracking-wide drop-shadow-lg ${isDark ? 'text-yellow-300 hover:text-yellow-400' : 'text-blue-700 hover:text-blue-900'} transition-colors duration-300`}>
                     Ceylon Infinite Destinations
                 </h2>
 
-                <p
-                    className={`text-base sm:text-lg md:text-2xl mb-8 max-w-3xl leading-relaxed drop-shadow-md italic animate-[fadeInUp_1s_ease-in-out_2s_both] ${isDark ? 'text-gray-300' : 'text-gray-800'
-                        } transition-colors duration-300`}
-                >
+                <p className={`text-base sm:text-lg md:text-2xl mb-8 max-w-3xl leading-relaxed drop-shadow-md italic animate-[fadeInUp_1s_ease-in-out_2s_both] ${isDark ? 'text-gray-300' : 'text-gray-800'} transition-colors duration-300`}>
                     Witness the{' '}
                     <span className={`${isDark ? 'text-yellow-300' : 'text-yellow-500'} font-semibold`}>
                         breathtaking,
@@ -79,32 +59,16 @@ const Home = React.memo(() => {
                     destinations around the island.
                 </p>
 
-                <button
-                    onClick={() => navigate('/login')}
-                    className={`border-2 ${isDark
-                        ? 'border-white text-white hover:bg-white hover:text-black'
-                        : 'border-black text-black hover:bg-black hover:text-white'
-                        } px-6 sm:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg md:text-xl font-semibold transform transition-all duration-500 hover:scale-110 shadow-lg hover:shadow-xl animate-pulse focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}
-                    aria-label="Book your destination now"
-                >
+                <button onClick={() => navigate('/login')} className={`border-2 ${isDark ? 'border-white text-white hover:bg-white hover:text-black' : 'border-black text-black hover:bg-black hover:text-white'} px-6 sm:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg md:text-xl font-semibold transform transition-all duration-500 hover:scale-110 shadow-lg hover:shadow-xl animate-pulse focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer`} aria-label="Book your destination now">
                     🌍 BOOKING NOW ✨
                 </button>
 
-                <div
-                    className={`flex space-x-6 mt-8 text-2xl sm:text-3xl ${isDark ? 'text-white' : 'text-gray-700'
-                        } transition-colors duration-300`}
-                >
+                <div className={`flex space-x-6 mt-8 text-2xl sm:text-3xl ${isDark ? 'text-white' : 'text-gray-700'} transition-colors duration-300`} >
+
                     {socialLinks.map(({ href, icon, color, label }, index) => {
                         const IconComponent = icon;
                         return (
-                            <a
-                                key={index}
-                                href={href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={`transform transition-transform duration-300 hover:scale-125 ${color}`}
-                                aria-label={`Visit our ${label} page`}
-                            >
+                            <a key={index} href={href} target="_blank" rel="noopener noreferrer" className={`transform transition-transform duration-300 hover:scale-150 ${color}`} aria-label={`Visit our ${label} page`}>
                                 <IconComponent />
                             </a>
                         );
