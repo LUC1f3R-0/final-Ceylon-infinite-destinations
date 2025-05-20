@@ -12,6 +12,9 @@ const Home = React.memo(() => {
     const [loading, setLoading] = React.useState(false);
     const [pageData, setPageData] = React.useState([]);
 
+    const destinationRef = React.useRef(null);
+    const hasScrolled = React.useRef(false);
+    
     const socialLinks = [
         {
             href: 'https://www.facebook.com/share/1XjEbgs2kd/?mibextid=qi2Omg',
@@ -49,9 +52,30 @@ const Home = React.memo(() => {
                 }
             })
             .catch(error => {
-                console.error("Error fetching image data:", error);
-            })
+                if (error.code === 'ECONNABORTED') {
+                    console.error("Request timed out:", error.message);
+                    alert("Server is taking too long to respond. Please try again later.");
+                } else {
+                    console.error("Error fetching image data:", error);
+                    alert("An error occurred while fetching data.");
+                }
+            });
     }, []);
+
+    // Scroll detection logic
+    React.useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0 && !hasScrolled.current) {
+                hasScrolled.current = true;
+                destinationRef.current?.scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+
 
     return (
         <>
@@ -74,7 +98,7 @@ const Home = React.memo(() => {
                         <span className={`${isDark ? 'text-yellow-300' : 'text-yellow-500'} font-semibold transition-colors duration-300`}>
                             breathtaking,
                         </span>{' '}
-                        <span className={`${isDark ? 'text-green summoning-300' : 'text-green-600'} font-semibold transition-colors duration-300`}>
+                        <span className={`${isDark ? 'text-green-300' : 'text-green-600'} font-semibold transition-colors duration-300`}>
                             exotic
                         </span>{' '}
                         destinations around the island.
@@ -84,8 +108,8 @@ const Home = React.memo(() => {
                         🌍 BOOKING NOW ✨
                     </button>
 
-                    <div className={`flex space-x-6 mt-8 text-2xl sm:text-3xl ${isDark ? 'text-white' : 'text-gray-700'} transition-colors duration-300`} >
 
+                    <div className={`flex space-x-6 mt-8 text-2xl sm:text-3xl ${isDark ? 'text-white' : 'text-gray-700'} transition-colors duration-300`}>
                         {socialLinks.map(({ href, icon, color, label }, index) => {
                             const IconComponent = icon;
                             return (
@@ -97,9 +121,13 @@ const Home = React.memo(() => {
                     </div>
                 </div>
             </div>
-            <div className={`py-12 ${isDark ? 'bg-black' : 'bg-gray-100'} transition-colors duration-300`} data-aos="fade-up">
+
+            <div ref={destinationRef}
+                className={`py-12 ${isDark ? 'bg-black' : 'bg-gray-100'} transition-colors duration-300`}
+                data-aos="fade-up"
+            >
                 <div className="container mx-auto px-4">
-                    <h2 className={`text-3xl font-bold text-center mb-10 ${isDark ? 'text-white' : 'text-blue-900'} drop-shadow-md transition-colors duration-300`}>
+                    <h2 className={`text-3xl font-bold text-center mb-10 mt-10 ${isDark ? 'text-white' : 'text-blue-900'} drop-shadow-md transition-colors duration-300`}>
                         Popular Destinations
                     </h2>
 
@@ -107,8 +135,8 @@ const Home = React.memo(() => {
                         {loading ? pageData.map((data, index) => (
                             <PopularDestinations key={index} destination={data} />
                         )) : (
-                            <div className="flex items-center justify-center">
-                                <span className="loading loading-dots loading-xl"></span>
+                            <div className="flex items-center justify-center w-full col-span-full min-h-[200px]">
+                                <span className={`loading loading-dots loading-xl ${isDark ? '' : 'text-black'}`}></span>
                             </div>
                         )}
                     </div>

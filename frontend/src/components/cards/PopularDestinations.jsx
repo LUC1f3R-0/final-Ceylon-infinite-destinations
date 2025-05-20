@@ -11,7 +11,7 @@ const PopularDestinations = ({ destination }) => {
 
     const toggleValue = useSelector((state) => state.toggle.value)
     const [isDarkMode, setIsDarkMode] = React.useState(toggleValue)
-    
+
     useEffect(() => {
         setIsDarkMode(toggleValue);
     }, [toggleValue]);
