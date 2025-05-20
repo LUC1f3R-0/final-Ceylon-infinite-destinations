@@ -71,16 +71,16 @@ const Home = React.memo(() => {
 
                     <p className={`text-base sm:text-lg md:text-2xl mb-8 max-w-3xl leading-relaxed drop-shadow-md italic animate-[fadeInUp_1s_ease-in-out_2s_both] ${isDark ? 'text-gray-300' : 'text-gray-800'} transition-colors duration-300`}>
                         Witness the{' '}
-                        <span className={`${isDark ? 'text-yellow-300' : 'text-yellow-500'} font-semibold`}>
+                        <span className={`${isDark ? 'text-yellow-300' : 'text-yellow-500'} font-semibold transition-colors duration-300`}>
                             breathtaking,
                         </span>{' '}
-                        <span className={`${isDark ? 'text-green summoning-300' : 'text-green-600'} font-semibold`}>
+                        <span className={`${isDark ? 'text-green summoning-300' : 'text-green-600'} font-semibold transition-colors duration-300`}>
                             exotic
                         </span>{' '}
                         destinations around the island.
                     </p>
 
-                    <button onClick={() => navigate('/login')} className={`border-2 ${isDark ? 'border-white text-white hover:bg-white hover:text-black' : 'border-black text-black hover:bg-black hover:text-white'} px-6 sm:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg md:text-xl font-semibold transform transition-all duration-500 hover:scale-110 shadow-lg hover:shadow-xl animate-pulse focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer`} aria-label="Book your destination now">
+                    <button onClick={() => navigate('/login')} className={`border-2 ${isDark ? 'border-white text-white hover:bg-white hover:text-black' : 'border-black text-black hover:bg-black hover:text-white'} px-6 sm:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg md:text-xl font-semibold transform transition-all duration-500 hover:scale-110 shadow-lg hover:shadow-xl animate-pulse focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer `} aria-label="Book your destination now ">
                         🌍 BOOKING NOW ✨
                     </button>
 
@@ -97,9 +97,9 @@ const Home = React.memo(() => {
                     </div>
                 </div>
             </div>
-            <div className={`py-12 ${isDark ? 'bg-black' : 'bg-gray-100'}`} data-aos="fade-up">
+            <div className={`py-12 ${isDark ? 'bg-black' : 'bg-gray-100'} transition-colors duration-300`} data-aos="fade-up">
                 <div className="container mx-auto px-4">
-                    <h2 className={`text-3xl font-bold text-center mb-10 ${isDark ? 'text-white' : 'text-blue-900'} drop-shadow-md`}>
+                    <h2 className={`text-3xl font-bold text-center mb-10 ${isDark ? 'text-white' : 'text-blue-900'} drop-shadow-md transition-colors duration-300`}>
                         Popular Destinations
                     </h2>
 

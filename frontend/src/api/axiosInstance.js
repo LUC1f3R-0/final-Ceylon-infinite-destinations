@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-
+console.log("back end server", import.meta.env.VITE_BACKED_URL)
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_BACKED_URL,
     timeout: 5000,
