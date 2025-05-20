@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const PopularDestinations = ({ destination }) => {
-    console.log(destination)
+    
     const navigate = useNavigate()
 
     const toggleValue = useSelector((state) => state.toggle.value)
