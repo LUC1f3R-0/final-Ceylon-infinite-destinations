@@ -4,6 +4,7 @@ import Home from '../view/Home';
 import About from '../view/About';
 import Layout from '../components/layout/Layout';
 import NotFound from '../view/NotFound';
+import Details from '../view/locationDetails/Details';
 
 const AppRoutes = () => {
     const router = createBrowserRouter(
@@ -12,6 +13,7 @@ const AppRoutes = () => {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
                     <Route path="about" element={<About />} />
+                    <Route path="details/:id" element={<Details />} />
 
 
                 </Route >
