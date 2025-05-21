@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 import PopularDestinations from '../components/cards/PopularDestinations';
 import axiosInstance from '../api/axiosInstance';
+import OurServices from '../components/cards/OurServices';
+import { service } from '../assets/assets';
 
 const Home = React.memo(() => {
     const isDark = useSelector((state) => state.toggle.value);
@@ -14,7 +16,7 @@ const Home = React.memo(() => {
 
     const destinationRef = React.useRef(null);
     const hasScrolled = React.useRef(false);
-    
+
     const socialLinks = [
         {
             href: 'https://www.facebook.com/share/1XjEbgs2kd/?mibextid=qi2Omg',
@@ -130,7 +132,6 @@ const Home = React.memo(() => {
                     <h2 className={`text-3xl font-bold text-center mb-10 mt-10 ${isDark ? 'text-white' : 'text-blue-900'} drop-shadow-md transition-colors duration-300`}>
                         Popular Destinations
                     </h2>
-
                     <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         {loading ? pageData.map((data, index) => (
                             <PopularDestinations key={index} destination={data} />
@@ -142,6 +143,22 @@ const Home = React.memo(() => {
                     </div>
                 </div>
             </div>
+            <div className={`py-12 ${isDark ? 'bg-black' : 'bg-gray-100'} transition-colors duration-300`} data-aos="fade-up">
+                <div className="container mx-auto px-4">
+                    <h2 className={`text-3xl font-bold text-center mb-8 ${isDark ? 'text-white' : 'text-blue-900'} drop-shadow-md transition-colors duration-300`}>
+                        Our Services
+                    </h2>
+
+                    <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                        {service.map((data, index) => (
+                            <div key={index} className="w-full">
+                                <OurServices services={data} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
         </>
     );
 });
