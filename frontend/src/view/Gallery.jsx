@@ -14,7 +14,7 @@ const Gallery = () => {
     axiosInstance('destination/gallery')
       .then(response => {
 
-        console.log(response)
+        setPageData(response)
 
       })
       .then(data => {
@@ -24,7 +24,7 @@ const Gallery = () => {
         console.error('Error fetching data:', error);
       });
   }, []);
-
+console.log(pageData)
   return (
     <>
       {/* Background Section */}
