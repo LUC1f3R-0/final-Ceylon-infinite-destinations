@@ -2,8 +2,8 @@ import React from "react";
 import { FaImages } from "react-icons/fa";
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import axiosInstance from "../api/axiosInstance";
-import GalleryCard from "../components/cards/GalleryCard";
 import { useSelector } from "react-redux";
+import GalleryCard from "../components/cards/GalleryCard";
 
 const Gallery = () => {
 
@@ -58,7 +58,7 @@ const Gallery = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Gallery Collection</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {loading ? pageData.map((img, index) => (
-            <Gallery key={index} destination={img} />
+            <GalleryCard key={index} destination={img} />
           )) : (
             <div className="flex items-center justify-center w-full col-span-full min-h-[200px]">
               <span className={`loading loading-dots loading-xl ${isDark ? '' : 'text-black'}`}></span>
