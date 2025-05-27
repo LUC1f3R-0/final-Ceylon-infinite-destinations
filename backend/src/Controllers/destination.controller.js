@@ -8,7 +8,7 @@ const destination = async (request, response) => {
 
         if (!items.length) { return response.status(404).json({ success: false, message: 'No destinations found', }) }
 
-        return response.status(200).json({ success: true, message: 'database connected', data: items });
+        return response.status(200).json({ success: true, message: 'Data found', data: items });
 
     } catch (error) {
         console.error("Error fetching destinations:", error);
