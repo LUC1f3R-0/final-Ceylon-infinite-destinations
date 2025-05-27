@@ -63,8 +63,7 @@ const Home = React.memo(() => {
                 }
             });
     }, []);
-
-    // Scroll detection logic
+    
     React.useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 0 && !hasScrolled.current) {
@@ -77,7 +76,7 @@ const Home = React.memo(() => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-
+console.log('main')
 
     return (
         <>
