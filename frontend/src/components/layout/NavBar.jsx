@@ -37,7 +37,7 @@ const NavBar = () => {
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex space-x-4 text-sm font-bold items-center">
                     <Link to="/" className="px-6 py-2 hover:bg-gray-300 hover:text-black rounded">Home</Link>
-                    <Link to="/Gallery" className="px-6 py-2 hover:bg-gray-300 hover:text-black rounded">Gallery</Link>
+                    <Link to="gallery" className="px-6 py-2 hover:bg-gray-300 hover:text-black rounded">Gallery</Link>
                     <Link to="/contact" className="px-6 py-2 hover:bg-gray-300 hover:text-black rounded">Contact</Link>
                     <Link to="about" className="px-6 py-2 hover:bg-gray-300 hover:text-black rounded">About</Link>
                     <button className="py-2 px-6 bg-white text-black hover:bg-gray-200 rounded">Login</button>
