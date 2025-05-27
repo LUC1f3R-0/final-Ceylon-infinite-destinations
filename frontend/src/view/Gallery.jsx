@@ -53,7 +53,7 @@ const Gallery = () => {
         console.error('Error fetching data:', error);
       });
   }, []);
-console.log(pageData)
+  
   return (
     <>
       <div className={`absolute inset-0 bg-gradient-to-b ${isDark ? 'from-gray-900/70 to-black/90' : 'from-white/80 to-gray-200/90'} flex flex-col items-center justify-center text-center px-4 transition-colors duration-500`}>
