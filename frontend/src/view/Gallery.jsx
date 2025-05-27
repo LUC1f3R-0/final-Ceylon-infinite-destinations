@@ -69,7 +69,7 @@ const Gallery = () => {
               Explore breathtaking scenes and unforgettable memories captured around the island.
             </p>
 
-            <div className={`flex space-x-6 mt-4 text-3xl text-${isDark ? "white" : "black"}`}>
+            <div className={`flex space-x-6 mt-4 text-3xl text-${isDark ? "white" : "black"} transition-colors duration-500`}>
               {socialLinks.map(({ href, icon, color, label }, index) => {
                 const IconComponent = icon;
                 return (
