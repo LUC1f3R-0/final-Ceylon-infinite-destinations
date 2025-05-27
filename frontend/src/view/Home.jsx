@@ -137,7 +137,7 @@ const Home = React.memo(() => {
                             <PopularDestinations key={index} destination={data} />
                         )) : (
                             <div className="flex items-center justify-center w-full col-span-full min-h-[200px]">
-                                <span className={`loading loading-dots loading-xl ${isDark ? '' : 'text-black'}`}></span>
+                                <span className={`loading loading-dots loading-xl ${isDark ? '' : 'text-black'} transition-colors duration-300`}></span>
                             </div>
                         )}
                     </div>
