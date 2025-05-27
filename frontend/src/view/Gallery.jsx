@@ -56,7 +56,7 @@ const Gallery = () => {
 
   return (
     <>
-      <div className={`bg-${isDark ? "black" : "white"} duration-500`}>
+      <div className={`absolute inset-0 bg-gradient-to-b ${isDark ? 'from-gray-900/70 to-black/90' : 'from-white/80 to-gray-200/90'} flex flex-col items-center justify-center text-center px-4 transition-colors duration-500`}>
         <div className="relative h-screen w-full animate__animated animate__fadeIn animate__delay-2s">
           <video autoPlay loop muted className="absolute inset-0 w-full h-full object-cover">
             <source src="/0312 (1)(1).mp4" type="video/mp4" />
