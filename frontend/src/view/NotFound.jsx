@@ -12,7 +12,7 @@ const NotFound = () => {
             setCount((prev) => {
                 if (prev === 1) {
                     clearInterval(interval);
-                    navigate('/');
+                    navigate(-1);
                     return 0;
                 }
                 return prev - 1;
