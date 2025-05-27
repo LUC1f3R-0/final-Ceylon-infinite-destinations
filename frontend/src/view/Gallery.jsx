@@ -24,7 +24,7 @@ const Gallery = () => {
         console.error('Error fetching data:', error);
       });
   }, []);
-
+console.log("running")
   return (
     <>
       {/* Background Section */}
