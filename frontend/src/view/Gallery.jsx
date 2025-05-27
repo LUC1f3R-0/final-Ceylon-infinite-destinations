@@ -17,6 +17,7 @@ const Gallery = () => {
       .then(response => {
         const { success, message, data } = response.data
         setPageData(data)
+        setLoading(true)
       })
       .then(data => {
         console.log('Fetched data:', data);
