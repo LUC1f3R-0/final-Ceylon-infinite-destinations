@@ -7,15 +7,12 @@ const Gallery = () => {
 
   const [pageData, setPageData] = React.useState([]);
 
-  const images = [
-    { id: 1, name: "Kandy", defaultSrc: "/kandy.png", hoverSrc: "/gallery/1.png" },];
-
   React.useEffect(() => {
     axiosInstance('destination/gallery')
       .then(response => {
 
-        console.log(response)
-
+        const { success, message, data } = response.data
+        setPageData(data)
       })
       .then(data => {
         console.log('Fetched data:', data);
@@ -24,7 +21,7 @@ const Gallery = () => {
         console.error('Error fetching data:', error);
       });
   }, []);
-console.log("running")
+
   return (
     <>
       {/* Background Section */}
@@ -55,21 +52,21 @@ console.log("running")
       <div className="container mx-auto px-4 py-10">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Gallery Collection</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {images.map((img) => (
+          {pageData.map((img) => (
             <div
               key={img.id}
               className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer group"
             >
               {/* Default Image */}
               <img
-                src={img.defaultSrc}
+                src={img.defltPath}
                 alt={img.name}
                 className="w-full h-64 object-cover transition-opacity duration-500 group-hover:opacity-0"
               />
 
               {/* Hover Image */}
               <img
-                src={img.hoverSrc}
+                src={img.hovrPath}
                 alt={`${img.name} - Hover`}
                 className="absolute inset-0 w-full h-64 object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
               />
