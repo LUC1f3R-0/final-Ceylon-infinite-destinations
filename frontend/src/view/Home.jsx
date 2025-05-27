@@ -75,9 +75,7 @@ const Home = React.memo(() => {
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-
-console.log('main')
-
+    
     return (
         <>
             <div className="relative min-h-screen overflow-hidden">
