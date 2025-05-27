@@ -2,15 +2,19 @@ import React from "react";
 import { FaImages } from "react-icons/fa";
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import axiosInstance from "../api/axiosInstance";
+import GalleryCard from "../components/cards/GalleryCard";
+import { useSelector } from "react-redux";
 
 const Gallery = () => {
 
+  const isDark = useSelector((state) => state.toggle.value);
+
+  const [loading, setLoading] = React.useState(false);
   const [pageData, setPageData] = React.useState([]);
 
   React.useEffect(() => {
     axiosInstance('destination/gallery')
       .then(response => {
-
         const { success, message, data } = response.data
         setPageData(data)
       })
@@ -52,31 +56,13 @@ const Gallery = () => {
       <div className="container mx-auto px-4 py-10">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Gallery Collection</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {pageData.map((img) => (
-            <div
-              key={img.id}
-              className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer group"
-            >
-              {/* Default Image */}
-              <img
-                src={img.defltPath}
-                alt={img.name}
-                className="w-full h-64 object-cover transition-opacity duration-500 group-hover:opacity-0"
-              />
-
-              {/* Hover Image */}
-              <img
-                src={img.hovrPath}
-                alt={`${img.name} - Hover`}
-                className="absolute inset-0 w-full h-64 object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-              />
-
-              {/* Image Name Overlay */}
-              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                {img.name}
-              </div>
+          {loading ? pageData.map((img, index) => (
+            <Gallery key={index} destination={img} />
+          )) : (
+            <div className="flex items-center justify-center w-full col-span-full min-h-[200px]">
+              <span className={`loading loading-dots loading-xl ${isDark ? '' : 'text-black'}`}></span>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </>
