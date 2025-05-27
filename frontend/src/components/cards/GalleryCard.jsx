@@ -1,7 +1,7 @@
 import React from 'react'
 
-const GalleryCard = ({ img }) => {
-    
+const GalleryCard = (img) => {
+    console.log(img)
     return (
         <>
             <div
