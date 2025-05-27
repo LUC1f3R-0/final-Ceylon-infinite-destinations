@@ -115,7 +115,7 @@ const Home = React.memo(() => {
                         {socialLinks.map(({ href, icon, color, label }, index) => {
                             const IconComponent = icon;
                             return (
-                                <a key={index} href={href} target="_blank" rel="noopener noreferrer" className={`transform transition-transform duration-300 hover:scale-150 ${color}`} aria-label={`Visit our ${label} page`}>
+                                <a key={index} href={href} target="_blank" rel="noopener noreferrer" className={`transform transition-transform duration-300 hover:scale-150 ${color}`} aria-label={`Visit our ${label} page transition-colors duration-300`}>
                                     <IconComponent />
                                 </a>
                             );
@@ -137,7 +137,7 @@ const Home = React.memo(() => {
                             <PopularDestinations key={index} destination={data} />
                         )) : (
                             <div className="flex items-center justify-center w-full col-span-full min-h-[200px]">
-                                <span className={`loading loading-dots loading-xl ${isDark ? '' : 'text-black'}`}></span>
+                                <span className={`loading loading-dots loading-xl ${isDark ? '' : 'text-black'} transition-colors duration-300`}></span>
                             </div>
                         )}
                     </div>

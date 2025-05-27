@@ -6,9 +6,9 @@ const destination = async (request, response) => {
         
         const items = item.map(item => ({ id: item._id, title: item.destinationTitle, description: item.description, path: item.imagePath }));
 
-        if (!items.length) { return response.status(404).json({ success: false, message: 'No destinations found', }) }
+        if (!items.length) { return response.status(404).json({ success: false, message: 'No destinations data', }) }
 
-        return response.status(200).json({ success: true, message: 'Data found', data: items });
+        return response.status(200).json({ success: true, message: 'destination data retrieved successfully', data: items });
 
     } catch (error) {
         console.error("Error fetching destinations:", error);
