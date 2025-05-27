@@ -1,10 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 const GalleryCard = ({ id, name, defltPath, hovrPath }) => {
-    console.log(id, name, defltPath, hovrPath)
+    const isDark = useSelector((state) => state.toggle.value);
     return (
         <>
-            <div key={id} className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer group">
+            <div key={id} className={`bg-${isDark ? "white" : "black"} relative overflow-hidden rounded-lg shadow-lg cursor-pointer group`}>
                 <img
                     src={defltPath}
                     alt={name}
