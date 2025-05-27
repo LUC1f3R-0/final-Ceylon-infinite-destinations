@@ -6,6 +6,7 @@ import PopularDestinations from '../components/cards/PopularDestinations';
 import axiosInstance from '../api/axiosInstance';
 import OurServices from '../components/cards/OurServices';
 import { service } from '../assets/assets';
+import Footer from '../components/layout/Footer';
 
 const Home = React.memo(() => {
     const isDark = useSelector((state) => state.toggle.value);
@@ -63,7 +64,7 @@ const Home = React.memo(() => {
                 }
             });
     }, []);
-    
+
     React.useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 0 && !hasScrolled.current) {
@@ -75,7 +76,7 @@ const Home = React.memo(() => {
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-    
+
     return (
         <>
             <div className="relative min-h-screen overflow-hidden">
@@ -155,7 +156,7 @@ const Home = React.memo(() => {
                     </div>
                 </div>
             </div>
-
+            <Footer />
         </>
     );
 });
