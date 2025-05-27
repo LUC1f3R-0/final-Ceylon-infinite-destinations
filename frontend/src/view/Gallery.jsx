@@ -1,13 +1,89 @@
-import React from 'react'
+import React from "react";
+import { FaImages } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
+import axiosInstance from "../api/axiosInstance";
 
 const Gallery = () => {
+
+  const [pageData, setPageData] = React.useState([]);
+
+  const images = [
+    { id: 1, name: "Kandy", defaultSrc: "/kandy.png", hoverSrc: "/gallery/1.png" },];
+
+  React.useEffect(() => {
+    axiosInstance('destination/gallery')
+      .then(response => {
+
+        console.log(response)
+
+      })
+      .then(data => {
+        console.log('Fetched data:', data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        Gallery page
-      </h1>
-    </>
-  )
-}
+      {/* Background Section */}
+      <div className="relative h-screen w-full animate__animated animate__fadeIn animate__delay-2s">
+        <video autoPlay loop muted className="absolute inset-0 w-full h-full object-cover">
+          <source src="/0312 (1)(1).mp4" type="video/mp4" />
+        </video>
 
-export default Gallery
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-4 tracking-wide drop-shadow-lg flex items-center gap-3 text-white hover:text-yellow-300 transition-colors duration-300">
+            <FaImages className="text-yellow-400 text-6xl md:text-7xl" />
+            <span>Stunning Moments</span>
+          </h1>
+          <p className="text-lg md:text-2xl text-white mb-8 max-w-3xl leading-relaxed drop-shadow-md italic">
+            Explore breathtaking scenes and unforgettable memories captured around the island.
+          </p>
+
+          <div className="flex space-x-6 mt-4 text-3xl text-white">
+            <a href="#" className="hover:text-blue-600"><FaFacebook /></a>
+            <a href="#" className="hover:text-pink-600"><FaInstagram /></a>
+            <a href="#" className="hover:text-blue-700"><FaLinkedin /></a>
+            <a href="#" className="hover:text-red-600"><FaYoutube /></a>
+          </div>
+        </div>
+      </div>
+
+      {/* Gallery Section */}
+      <div className="container mx-auto px-4 py-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Gallery Collection</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {images.map((img) => (
+            <div
+              key={img.id}
+              className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer group"
+            >
+              {/* Default Image */}
+              <img
+                src={img.defaultSrc}
+                alt={img.name}
+                className="w-full h-64 object-cover transition-opacity duration-500 group-hover:opacity-0"
+              />
+
+              {/* Hover Image */}
+              <img
+                src={img.hoverSrc}
+                alt={`${img.name} - Hover`}
+                className="absolute inset-0 w-full h-64 object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              />
+
+              {/* Image Name Overlay */}
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                {img.name}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Gallery;
