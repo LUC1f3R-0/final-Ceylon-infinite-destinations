@@ -12,6 +12,33 @@ const Gallery = () => {
   const [loading, setLoading] = React.useState(false);
   const [pageData, setPageData] = React.useState([]);
 
+  const socialLinks = [
+    {
+      href: 'https://www.facebook.com/share/1XjEbgs2kd/?mibextid=qi2Omg',
+      icon: FaFacebook,
+      color: 'hover:text-blue-600',
+      label: 'Facebook',
+    },
+    {
+      href: 'https://www.instagram.com/ceyloninfinite/',
+      icon: FaInstagram,
+      color: 'hover:text-pink-600',
+      label: 'Instagram',
+    },
+    {
+      href: 'https://www.linkedin.com/company/106268570/admin/dashboard/',
+      icon: FaLinkedin,
+      color: 'hover:text-blue-700',
+      label: 'LinkedIn',
+    },
+    {
+      href: 'https://youtube.com/@ceyloninfinitedestinations?si=uuE7iW0YawwcWSxg',
+      icon: FaYoutube,
+      color: 'hover:text-red-600',
+      label: 'YouTube',
+    },
+  ];
+
   React.useEffect(() => {
     axiosInstance('destination/gallery')
       .then(response => {
@@ -44,15 +71,19 @@ const Gallery = () => {
           </p>
 
           <div className={`flex space-x-6 mt-4 text-3xl text-${isDark ? "white" : "black"}`}>
-            <a href="#" className="hover:text-blue-600 hover:scale-150 transition-scale duration-300"><FaFacebook /></a>
-            <a href="#" className="hover:text-pink-600 hover:scale-150 transition-scale duration-300"><FaInstagram /></a>
-            <a href="#" className="hover:text-blue-700 hover:scale-150 transition-scale duration-300"><FaLinkedin /></a>
-            <a href="#" className="hover:text-red-600 hover:scale-150 transition-scale duration-300"><FaYoutube /></a>
+            {socialLinks.map(({ href, icon, color, label }, index) => {
+              const IconComponent = icon;
+              return (
+                <a key={index} href={href} target="_blank" rel="noopener noreferrer" className={`transform transition-transform duration-300 hover:scale-150 ${color}`} aria-label={`Visit our ${label} page`}>
+                  <IconComponent />
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>
       <div className="container mx-auto px-4 py-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Gallery Collection</h2>
+        <h2 className={`text-3xl md:text-4xl font-bold text-center text-${isDark ? "white" : "black"} mb-6`}>Gallery Collection</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {loading ? pageData.map((img, index) => (
             <GalleryCard key={index} destination={img} />
