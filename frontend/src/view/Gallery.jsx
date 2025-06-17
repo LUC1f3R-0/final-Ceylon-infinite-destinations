@@ -4,7 +4,6 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import axiosInstance from "../api/axiosInstance";
 import { useSelector } from "react-redux";
 import GalleryCard from "../components/cards/GalleryCard";
-import Footer from "../components/layout/Footer";
 
 const Gallery = () => {
 

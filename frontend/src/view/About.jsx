@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
 import images from '../assets/assets';
+import { useSelector } from 'react-redux';
 
 const About = () => {
+
+    const isDark = useSelector((state) => state.toggle.value);
 
     const [selectedPerson, setSelectedPerson] = useState(null);
 
@@ -43,7 +46,7 @@ const About = () => {
 
     return (
         <>
-            <div className="bg-gray-50 min-h-screen py-16">
+            <div className={`${isDark ? "bg-black" : "bg-gray-50"} min-h-screen py-16 transition-colors duration-300`}>
                 <div className="container mx-auto px-6">
 
                     {/* Logo Section */}
@@ -56,7 +59,7 @@ const About = () => {
                         <h1 className="text-5xl font-bold text-green-700 mb-4 tracking-wide">Ceylon Destinations</h1>
                         <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
                             Welcome to <span className="font-semibold text-green-700">Ceylon Infinite Destinations</span> – Your Gateway to the Pearl of the Indian Ocean.
-                            At Ceylon Destinations, we specialize in *curating unforgettable travel experiences* that blend *adventure, culture, and relaxation.*
+                            At Ceylon Destinations, we specialize in <strong>curating unforgettable travel experiences</strong> that blend <strong>adventure, culture, and relaxation. </strong>
                             From misty highlands to golden beaches, let us take you on a journey through Sri Lanka’s most breathtaking landscapes.
                         </p>
                     </div>

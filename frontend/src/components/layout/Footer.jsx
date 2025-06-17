@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaEnvelope, FaFacebook, FaInstagram, FaLinkedin, FaPhone, FaWhatsapp, FaYoutube } from 'react-icons/fa'
 import { useSelector } from 'react-redux';
+import images from '../../assets/assets';
 
 const Footer = () => {
     const isDark = useSelector((state) => state.toggle.value);
@@ -11,7 +12,7 @@ const Footer = () => {
                 <div className="container mx-auto grid md:grid-cols-3 gap-6 text-center md:text-left">
 
                     <div>
-                        <img src="/logo.png" alt="Logo" className="mx-auto md:mx-0 w-32 h-auto mb-4" />
+                        <img src={images.image_logo} alt="Logo" className="mx-auto md:mx-0 w-32 h-auto mb-4" />
                         <h3 className="text-xl font-semibold">Ceylon Destinations</h3>
                         <p className="text-gray-600">141, Lionhead Trail, Scarborough, Ontario, Canada.</p>
                         <div className="flex justify-center md:justify-start items-center mt-3 space-x-4 text-xl">
