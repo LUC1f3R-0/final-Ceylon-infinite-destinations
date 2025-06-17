@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggle } from '../../redux/toggleSlice';
 import { MdDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
+import images from '../../assets/assets';
 
 const ThemeToggle = ({ isDark, dispatch }) => (
     <div
@@ -19,19 +20,14 @@ const NavBar = () => {
     const isDark = useSelector((state) => state.toggle.value);
     const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-    // Remove this useEffect because state loads from redux initialState now
-    // React.useEffect(() => {
-    //     const dark = JSON.parse(localStorage.getItem('theme'))
-    // }, [])
-
     return (
         <nav className={`${isDark ? "bg-black text-white" : "bg-white text-black"} fixed top-0 left-0 right-0 z-50 shadow-md duration-500`}>
             <div className="container mx-auto px-4 flex justify-between items-center h-16">
                 {/* Logo */}
                 <img
-                    src="/PNG (2).png"
+                    src={images.image_logo}
                     alt="Ceylon Destinations Logo"
-                    className="h-12 md:h-14"
+                    className={`h-12 md:h-14 ${isDark ? "bg-amber-50 p-1" : ""} `}
                 />
 
                 {/* Desktop Navigation */}
