@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 import PopularDestinations from '../components/cards/PopularDestinations';
 import axiosInstance from '../api/axiosInstance';
 import OurServices from '../components/cards/OurServices';
-import { service } from '../assets/assets';
-
+import { service } from '../assets/service';
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaGlobe, FaPhone, FaEnvelope, FaWhatsapp, FaStar, FaRegStar, FaThumbsUp, FaThumbsDown, } from "react-icons/fa";
+import images from '../assets/assetes';
 const Home = React.memo(() => {
     const isDark = useSelector((state) => state.toggle.value);
     const navigate = useNavigate();
@@ -16,6 +16,13 @@ const Home = React.memo(() => {
 
     const destinationRef = React.useRef(null);
     const hasScrolled = React.useRef(false);
+
+    const [rating, setRating] = React.useState(0);
+
+    const handleRating = (value) => {
+        setRating(value);
+    };
+
 
     const socialLinks = [
         {
@@ -41,6 +48,45 @@ const Home = React.memo(() => {
             icon: FaYoutube,
             color: 'hover:text-red-600',
             label: 'YouTube',
+        },
+    ];
+
+
+    const comments = [
+        {
+            name: "Johny Cash",
+            time: "3 hours ago",
+            comment:
+                "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.",
+            image: images.customer_one,
+            likes: 132,
+            dislikes: 15,
+        },
+        {
+            name: "Emily Rose",
+            time: "5 hours ago",
+            comment:
+                "Donec lacinia congue felis in faucibus. Vestibulum in vulputate at, tempus viverra turpis.",
+            image: images.customer_two,
+            likes: 87,
+            dislikes: 5,
+        },
+        {
+            name: "Michael Smith",
+            time: "1 day ago",
+            comment:
+                "Praesent commodo cursus magna, vel scelerisque nisl consectetur et.",
+            image: images.customer_three,
+            likes: 102,
+            dislikes: 12,
+        },
+        {
+            name: "Jhon",
+            time: "2 days ago",
+            comment: "Nullam id dolor id nibh ultricies vehicula ut id elit.",
+            image: images.customer_four,
+            likes: 60,
+            dislikes: 3,
         },
     ];
 
@@ -121,10 +167,7 @@ const Home = React.memo(() => {
                 </div>
             </div>
 
-            <div ref={destinationRef}
-                className={`py-12 ${isDark ? 'bg-black' : 'bg-gray-100'} transition-colors duration-300`}
-                data-aos="fade-up"
-            >
+            <div ref={destinationRef} className={`py-12 ${isDark ? 'bg-black' : 'bg-gray-100'} transition-colors duration-300`} data-aos="fade-up">
                 <div className="container mx-auto px-4">
                     <h2 className={`text-3xl font-bold text-center mb-10 mt-10 ${isDark ? 'text-white' : 'text-blue-900'} drop-shadow-md transition-colors duration-300`}>
                         Popular Destinations
@@ -155,6 +198,106 @@ const Home = React.memo(() => {
                     </div>
                 </div>
             </div>
+            {/* share thoughts section start*/}
+            <section>
+                <div className="relative bg-gray-900 text-white text-center py-16">
+                    <img
+                        src={images.image_yala}
+                        alt="Newsletter Background"
+                        className="absolute inset-0 w-full h-full object-cover opacity-30"
+                    />
+                    <div className="relative z-10">
+                        <h2 className="text-3xl font-bold">
+                            Leave a Comment & Share Your Thoughts!
+                        </h2>
+                        <p className="mt-2">
+                            We love hearing from you! Drop us a message below.
+                        </p>
+
+
+                        <div className="flex justify-center mt-4 text-yellow-400 text-2xl">
+                            {[1, 2, 3, 4, 5].map((val) =>
+                                val <= rating ? (
+                                    <FaStar
+                                        key={val}
+                                        onClick={() => handleRating(val)}
+                                        className="cursor-pointer"
+                                    />
+                                ) : (
+                                    <FaRegStar
+                                        key={val}
+                                        onClick={() => handleRating(val)}
+                                        className="cursor-pointer"
+                                    />
+                                )
+                            )}
+                        </div>
+
+
+                        <div className="mt-6 flex flex-col items-center space-y-3">
+                            <input
+                                type="text"
+                                placeholder="Your Name"
+                                className="p-3 w-96 rounded-md bg-white text-gray-900 border focus:outline-none"
+                            />
+                            <input
+                                type="email"
+                                placeholder="Your Email"
+                                className="p-3 w-96 rounded-md bg-white text-gray-900 border focus:outline-none"
+                            />
+                            <textarea
+                                placeholder="Your Comment"
+                                className="p-3 w-96 h-24 rounded-md bg-white text-gray-900 border resize-none focus:outline-none"
+                            />
+                            <button className="bg-blue-500 px-6 py-3 rounded-md text-white hover:bg-blue-600 transition">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {/* share thoughts section end*/}
+            {/* comment section start*/}
+            <section>
+                <div className="py-10 bg-white">
+                    <h2 className="text-2xl font-bold text-center mb-8">
+                        What Our Customers Say
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4 md:px-12">
+                        {comments.map((item, index) => (
+                            <div
+                                key={index}
+                                className="flex items-start bg-gray-100 p-6 rounded-lg shadow-sm"
+                            >
+                                <img
+                                    src={item.image}
+                                    alt={item.name}
+                                    className="w-14 h-14 rounded-full mr-4 object-cover"
+                                />
+                                <div>
+                                    <h3 className="font-semibold text-black text-lg">{item.name}</h3>
+                                    <p className="text-sm text-gray-500 mb-2">{item.time}</p>
+                                    <p className="text-gray-700 mb-3">{item.comment}</p>
+                                    <div className="flex items-center space-x-4 text-sm text-gray-500">
+                                        <span className="flex items-center">
+                                            <FaThumbsUp className="mr-1 text-blue-500" />
+                                            {item.likes}
+                                        </span>
+                                        <span className="flex items-center">
+                                            <FaThumbsDown className="mr-1 text-red-500" />
+                                            {item.dislikes}
+                                        </span>
+                                        <span className="ml-auto hover:text-blue-500 cursor-pointer">
+                                            ↩ Reply
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+            {/* comment section end*/}
         </>
     );
 });
