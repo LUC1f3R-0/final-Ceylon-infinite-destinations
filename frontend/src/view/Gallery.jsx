@@ -94,7 +94,6 @@ const Gallery = () => {
           </div>
         </div>
       </div>
-      <Footer/>
     </>
   );
 };

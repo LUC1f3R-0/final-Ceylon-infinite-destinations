@@ -5,9 +5,8 @@ const Contact = () => {
     return (
         <>
             <h1 className="text-3xl font-bold underline">
-                Contact page
+                Contact tets page
             </h1>
-            <Footer />
         </>
     )
 }

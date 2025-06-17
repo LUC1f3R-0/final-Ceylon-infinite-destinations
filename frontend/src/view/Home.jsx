@@ -6,7 +6,6 @@ import PopularDestinations from '../components/cards/PopularDestinations';
 import axiosInstance from '../api/axiosInstance';
 import OurServices from '../components/cards/OurServices';
 import { service } from '../assets/assets';
-import Footer from '../components/layout/Footer';
 
 const Home = React.memo(() => {
     const isDark = useSelector((state) => state.toggle.value);
@@ -156,7 +155,6 @@ const Home = React.memo(() => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </>
     );
 });
