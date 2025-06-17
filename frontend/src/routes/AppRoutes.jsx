@@ -6,7 +6,7 @@ import Layout from '../components/layout/Layout';
 import NotFound from '../view/NotFound';
 import Details from '../view/locationDetails/Details';
 import Gallery from '../view/Gallery';
-import Contact from '../view/Contact';
+import Offers from '../view/Offers';
 
 const AppRoutes = () => {
     const router = createBrowserRouter(
@@ -16,7 +16,7 @@ const AppRoutes = () => {
                     <Route index element={<Home />} />
                     <Route path="details/:id" element={<Details />} />
                     <Route path="gallery" element={<Gallery />} />
-                    <Route path="contact" element={<Contact />} />
+                    <Route path="offers" element={<Offers />} />
                     <Route path="about" element={<About />} />
 
 

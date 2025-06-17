@@ -6,7 +6,7 @@ import axiosInstance from '../api/axiosInstance';
 import OurServices from '../components/cards/OurServices';
 import { service } from '../assets/service';
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaGlobe, FaPhone, FaEnvelope, FaWhatsapp, FaStar, FaRegStar, FaThumbsUp, FaThumbsDown, } from "react-icons/fa";
-import images from '../assets/assetes';
+import images from '../assets/assets';
 const Home = React.memo(() => {
     const isDark = useSelector((state) => state.toggle.value);
     const navigate = useNavigate();
