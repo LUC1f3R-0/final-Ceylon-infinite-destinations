@@ -25,7 +25,7 @@ const NavBar = () => {
             <div className="container mx-auto px-4 flex justify-between items-center h-16">
                 {/* Logo */}
                 <a href="/">
-                    +<img
+                    <img
                         src={images.image_logo}
                         alt="Ceylon Destinations Logo"
                         className={`h-12 md:h-14 ${isDark ? "bg-amber-50 p-1" : ""} `}
